@@ -6,22 +6,22 @@ import "react-multi-carousel/lib/styles.css";
 const Home = () => {
     const [datas, setDatas] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [loading, setLoading] = useState(true); // Add loading state
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         fetch('https://bestinbd.com/projects/web/task/api/get-req-data/sections?type=slug&value=home&get_section=yes&image=yes&post=yes&file=yes&gallery=yes')
             .then(res => res?.json())
             .then(data => {
                 setDatas(data);
-                setLoading(false); // Set loading to false when data is fetched
+                setLoading(false); 
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
-                setLoading(false); // Set loading to false in case of error
+                setLoading(false); 
             });
     }, []);
 
-    // Make sure featured_project is not null or undefined
+  
     const featured_project = datas?.featured_project;
 
     const nextSlide = () => {
